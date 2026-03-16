@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# Generated Output
+output/
+*.log
+*.csv
+config/api_config.py
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# IDES
+.vscode/
+.idea/
