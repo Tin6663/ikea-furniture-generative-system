@@ -4,7 +4,8 @@
 """
 import sys
 import os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# 将项目根目录加入 sys.path，确保可以导入 core/models/utils/config 等包
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from models.design_intent import (
     DesignIntentIR, FurnitureBaseInfo, OverallDimensions, LoadRequirement,
