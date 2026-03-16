@@ -30,7 +30,17 @@ cd ikea-furniture-generative-system
 pip3 install zhipuai pydantic streamlit pandas requests httpx python-dotenv Jinja2 cadquery
 ```
 
-### 3. 初始化零件数据库
+### 3. 配置 API Key
+
+在项目根目录创建 `.env` 文件，填入您的[智谱AI](https://open.bigmodel.cn/) API Key：
+
+```bash
+echo "ZHIPU_API_KEY=your_actual_api_key" > .env
+```
+
+或者直接编辑 `config/api_config.py`，将 `your_api_key_here` 替换为您的 API Key。
+
+### 4. 初始化零件数据库
 
 ```bash
 python3 data/init_db.py
@@ -42,7 +52,7 @@ python3 data/init_db.py
    共插入 18 条零件数据
 ```
 
-### 4. 启动WebUI
+### 5. 启动WebUI
 
 ```bash
 cd ikea-furniture-generative-system
@@ -51,7 +61,7 @@ streamlit run app.py
 
 浏览器访问：http://localhost:8501
 
-### 5. 运行集成测试（可选）
+### 6. 运行集成测试（可选）
 
 ```bash
 PYTHONPATH=. python3 tests/test_end2end.py
@@ -118,9 +128,15 @@ ikea-furniture-generative-system/
 ## 配置说明
 
 所有配置项均在 `config/` 目录下：
-- `api_config.py`：智谱AI API Key（默认已配置）、数据库路径
+- `api_config.py`：智谱AI API Key（需设置 `ZHIPU_API_KEY` 环境变量）、数据库路径、输出目录
+- `api_config_template.py`：配置文件模板，供参考
 - `constraint_config.py`：安全系数、尺寸公差等工程校验阈值
 - `part_category_config.py`：家具结构模板、功能件映射规则
+
+**配置 API Key 的推荐方式**：在项目根目录创建 `.env` 文件：
+```
+ZHIPU_API_KEY=your_actual_api_key
+```
 
 ## 技术栈
 
