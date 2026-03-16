@@ -118,9 +118,26 @@ ikea-furniture-generative-system/
 ## 配置说明
 
 所有配置项均在 `config/` 目录下：
-- `api_config.py`：智谱AI API Key（默认已配置）、数据库路径
+- `api_config.py`：智谱AI API Key（**需设置环境变量 `ZHIPU_API_KEY`**）、数据库路径及输出目录
 - `constraint_config.py`：安全系数、尺寸公差等工程校验阈值
 - `part_category_config.py`：家具结构模板、功能件映射规则
+
+### 配置 API Key
+
+在项目根目录创建 `.env` 文件并填入你的智谱AI API Key：
+
+```bash
+ZHIPU_API_KEY=your_real_api_key_here
+```
+
+或直接设置环境变量：
+
+```bash
+export ZHIPU_API_KEY=your_real_api_key_here   # macOS/Linux
+set ZHIPU_API_KEY=your_real_api_key_here       # Windows
+```
+
+> 获取 API Key：https://open.bigmodel.cn/
 
 ## 技术栈
 

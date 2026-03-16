@@ -4,8 +4,8 @@ API配置文件
 注意：生产环境请通过环境变量或.env文件传入API Key，不要硬编码
 
 使用方法：
-  将此文件复制为 config/api_config.py，并填写 ZHIPU_API_KEY，
-  或在运行前设置环境变量：export ZHIPU_API_KEY=your_real_api_key
+  在运行前设置环境变量：export ZHIPU_API_KEY=your_real_api_key
+  或在项目根目录创建 .env 文件并写入：ZHIPU_API_KEY=your_real_api_key
 """
 
 import os
