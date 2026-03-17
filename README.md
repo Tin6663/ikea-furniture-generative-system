@@ -138,6 +138,63 @@ ikea-furniture-generative-system/
 ZHIPU_API_KEY=your_actual_api_key
 ```
 
+## 零件库数据来源
+
+本项目零件数据库（`data/ikea_parts.db`）的数据来源与更新方法如下：
+
+### 一、宜家（IKEA）官方渠道
+
+| 渠道 | 地址 | 说明 |
+|------|------|------|
+| 宜家中国官网 | https://www.ikea.cn | 产品名称、尺寸、材质、价格、货号的权威来源 |
+| 桌面分类页 | https://www.ikea.cn/cn/zh/cat/zhuo-mian-10785/ | 所有在售桌面型号 |
+| 桌腿分类页 | https://www.ikea.cn/cn/zh/cat/zhuo-tui-10786/ | 所有在售桌腿型号 |
+| IKEA 国际站 | https://www.ikea.com | 部分产品国际参考（货号格式相同） |
+
+> ⚠️ 宜家**没有公开的官方API**，产品数据只能通过浏览官网或使用非官方手段获取。
+
+**自动更新方式（推荐）**：使用项目内置抓取脚本，从宜家非官方API拉取最新数据：
+
+```bash
+# 安装依赖（首次）
+pip install requests
+
+# 抓取并写入数据库（需要能访问 ikea.cn 的网络环境）
+python3 data/fetch_ikea_data.py
+
+# 仅预览抓取结果，不写入数据库
+python3 data/fetch_ikea_data.py --dry-run
+
+# 自定义关键词
+python3 data/fetch_ikea_data.py --keywords LAGKAPTEN LINNMON ADILS
+```
+
+脚本使用的API端点（宜家内部接口，非官方）：
+- 搜索接口：`https://sik.search.blue.cdtapps.com/cn/zh/search-result-page?q={关键词}`
+- 参考第三方库（已归档）：https://github.com/vrslev/ikea-api-client
+
+### 二、Bunnings（澳大利亚五金连锁）
+
+> 适用于需要通用五金件（螺丝、支架、合页等）替代宜家FIXA系列的场景。
+
+| 渠道 | 地址 | 说明 |
+|------|------|------|
+| Bunnings官网 | https://www.bunnings.com.au | 澳洲市场，通用五金/板材 |
+| 家具五金分类 | https://www.bunnings.com.au/our-range/building-hardware/furniture-fittings | 铰链、连接件、滑轨等 |
+
+Bunnings **没有公开API**，数据需通过网页抓取获得。推荐品类：
+- **通用螺丝/螺栓**：Zenith / Hillman 品牌，可替代 FIXA 螺丝套装
+- **板材**：F4星级松木板，可替代 LINNMON 桌面自定义尺寸
+- **合页/铰链**：Hafele/Sugatsune 品牌高质量铰链
+
+### 三、零件数据手动维护
+
+如需手动添加/修正零件，直接编辑 `data/init_db.py` 中的 `parts_data` 列表，然后重新运行：
+
+```bash
+python3 data/init_db.py
+```
+
 ## 技术栈
 
 | 模块 | 技术 |
