@@ -11,8 +11,6 @@ env/
 output/
 *.log
 *.csv
-config/api_config.py
-
 # OS Specific
 .DS_Store
 Thumbs.db

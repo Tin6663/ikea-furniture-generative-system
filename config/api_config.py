@@ -1,11 +1,8 @@
 """
-API配置文件模板（复制此文件为 api_config.py 并填入真实配置）
+API配置文件
 智谱AI GLM-4 配置及各模块输出路径配置
 
-使用方法：
-  cp config/api_config_template.py config/api_config.py
-  然后将 ZHIPU_API_KEY 替换为您在智谱AI平台申请的 API Key。
-
+注意：请将 ZHIPU_API_KEY 设置为您在智谱AI平台申请的 API Key。
 推荐做法：在项目根目录创建 .env 文件并写入：
     ZHIPU_API_KEY=your_actual_api_key
 或直接在运行前设置环境变量：
