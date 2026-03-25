@@ -29,7 +29,7 @@ MANUAL_OUTPUT_DIR = os.getenv("MANUAL_OUTPUT_DIR", os.path.join(OUTPUT_ROOT, "ma
 # ============================================================
 # 智谱AI (ZhipuAI) 配置
 # ============================================================
-ZHIPU_API_KEY: str = os.getenv("ZHIPU_API_KEY", "your_api_key_here")
+ZHIPU_API_KEY: str = os.getenv("ZHIPU_API_KEY", "")
 ZHIPU_MODEL: str = os.getenv("ZHIPU_MODEL", "glm-4.7")  # 默认稳定版本
 ZHIPU_MAX_TOKENS: int = int(os.getenv("ZHIPU_MAX_TOKENS", "4096"))
 ZHIPU_TEMPERATURE: float = float(os.getenv("ZHIPU_TEMPERATURE", "0.1"))  # 低温度，减少幻觉
